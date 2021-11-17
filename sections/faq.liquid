@@ -1,27 +1,58 @@
-<h1>{{section.settings.heading}}</h1>
-
-<h3>{{section.settings.question}}</h3>
-<p>{{section.settings.answer}}</p>
+{% for block in section.blocks %}
+    {% if block.type == 'QA' %}
+        <div class="faq question">
+            <input type="checkbox" id="question-{{forloop.index}}" class="question-toggle">
+            <label for="question-{{forloop.index}}" class="question-label">{{block.settings.title}}</label>
+            <div class="answer">{{block.settings.answer}}</div>
+        </div>
+    {% elsif block.type == 'headline' %}
+        <h4>{{block.settings.headline}}</h4>
+    {% endif %}
+{% endfor %}
 
 
 {% schema %}
 {
-    "name":"customer questions",
+    "name":"Questions & Answers",
     "settings": [
         {
-            "type":"text",
-            "label":"heading for faq",
-            "id":"heading"
+            "type": "text",
+            "label": "heading for faq",
+            "id": "heading"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "QA",
+            "name": "Questions/Answers",
+            "settings": [
+                {
+                    "type": "text",
+                    "label": "Customer Question",
+                    "id": "title"
+                },
+                {
+                    "type": "richtext",
+                    "label": "Answer",
+                    "id": "answer"
+                }
+            ]
         },
         {
-            "type":"text",
-            "label":"customer questions",
-            "id":"question"
-        },
-        {
-            "type":"textarea",
-            "label":"answer for faq",
-            "id":"answer"
+            "type": "headline",
+            "name": "headline",
+            "settings": [
+                {
+                    "type": "text",
+                    "label": "Headline (internal label only)",
+                    "id": "title"
+                },
+                {
+                    "type": "text",
+                    "label": "Headline",
+                    "id": "headline"
+                }
+            ]
         }
     ]
 }

@@ -1,0 +1,63 @@
+<h1>{{section.settings.heading}}</h1>
+
+{% for block in section.blocks %}
+    {% if block.type == 'QA' %}
+        <h3>{{block.settings.question}}</h3>
+        <p>{{block.settings.answer}}</p>
+    {% elsif block.type == 'headline' %}
+        <h1>{{block.settings.headline}}</h1>
+    {% endif %}
+{% endfor %}
+
+
+{% schema %}
+{
+    "name":"customer questions",
+    "settings": [
+        {
+            "type": "text",
+            "label": "heading for faq",
+            "id": "heading"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "QA",
+            "name": "Questions/Answers",
+            "settings": [
+                {
+                    "type": "text",
+                    "label": "question title (internal only)",
+                    "id": "title"
+                },
+                                {
+                    "type": "text",
+                    "label": "customer questions",
+                    "id": "question"
+                },
+                {
+                    "type": "richtext",
+                    "label": "answer for faq",
+                    "id": "answer"
+                }
+            ]
+        },
+        {
+                "type": "headline",
+                "name": "headline",
+                "settings": [
+                    {
+                        "type": "text",
+                        "label": "headline (internal only)",
+                        "id": "title"
+                    },
+                    {
+                        "type": "text",
+                        "label": "headline",
+                        "id": "headline"
+                    }
+                ]
+        }
+    ]
+}
+{% endschema %}
