@@ -144,7 +144,7 @@
         <h1 class="product-single__title">{{ product.title }}</h1>
         <script>window.performance.mark('debut:product:title_visible');</script>
           {% unless isAffiliateProduct %}
-          <div>⭐⭐⭐⭐⭐</div>
+          {% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', jm_style: '', concierge_install: false %}
           <div class="product__price">
             {% include 'product-price', variant: current_variant, show_vendor: section.settings.show_vendor %}
           </div>
@@ -295,6 +295,7 @@
         {% endif %}
     </div>
   </div>
+  {% render 'judgeme_widgets', widget_type: 'judgeme_review_widget', concierge_install: false %}
 </div>
 
 {% unless product == empty %}

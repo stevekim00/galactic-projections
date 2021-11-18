@@ -6997,7 +6997,7 @@ hr {
 .store-availability-list__phone {
   margin-bottom: 0; }
 
-/* custom styles */
+/* CUSTOM STYLES */
 .faq {
   border-radius: 8px;
   overflow: hidden;
@@ -7042,4 +7042,21 @@ hr {
 .faq .question-toggle:checked ~ .answer {
   max-height: 100vh;
   padding:1em;
+}
+
+/* JUDGE ME REVIEW WIDGETS */
+.jdgm-widget {
+  color: #0C007A;
+}
+
+.jdgm-star.jdgm--on:before {
+  color: #0c007a;
+}
+
+.jdgm-star.jdgm--off:before {
+  color: #0c007a; 
+}
+
+.jdgm-histogram__bar-content {
+  background: #0c007a !important;
 }

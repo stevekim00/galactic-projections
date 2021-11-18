@@ -40,6 +40,7 @@
               <span class="visually-hidden">{{ 'collections.general.collection_label' | t }}: </span>
               {{ collection.title }}
           </h1>
+          {% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', jm_style: '', concierge_install: false %}
         </div>
       </div>
       {% if is_filter_by_available == false and section.settings.sort_enable == false %}
