@@ -428,6 +428,11 @@
     },
     "affiliate_page": {
       "amazon_btn":"Find on Amazon"
+    },
+    "product_details": {
+      "product_description": "Description",
+      "product_details": "Details",
+      "shipping": "Shipping"
     }
   }
 }
