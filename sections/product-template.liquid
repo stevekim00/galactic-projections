@@ -292,7 +292,8 @@
               <div class="tab tab-active">
                 {{'customizations.product_details.product_description' | t}}
               </div>
-              {% unless product.metafields.description.details == blank %}
+              {% assign current_variant = product.selected_or_first_available_variant %}
+              {% unless current_variant.metafields.description.details == blank %}
               <div class="tab">
                 {{'customizations.product_details.product_details' | t}}
               </div>
@@ -305,9 +306,9 @@
               <div id="Description" class="content-body show-active">
                 {{ product.description }}
               </div>
-              {% unless product.metafields.description.details == blank %}
+              {% unless current_variant.metafields.description.details == blank %}
               <div id="Details" class="content-body">
-               {{product.metafields.description.details}}
+                  {{current_variant.metafields.description.details}}
               </div>
               {% endunless %}
               <div id="Shipping" class="content-body">
@@ -338,6 +339,19 @@
   </script>
 {% endunless %}
 
+<script type="application/json" id="DetailsJson">
+{
+  {% for variant in product.variants %}
+    "{{variant.id}}": {{ variant.metafields.description.details.value | json }} {% unless forloop.last %},{% endunless %}
+  {% endfor %}
+}
+</script>
+<script>
+  var detailsJson = document.getElementById('DetailsJson');
+  if (detailsJson) {
+    document.variantDetails = JSON.parse(detailsJson.innerHTML);
+  }
+</script>
 
 
 {% schema %}

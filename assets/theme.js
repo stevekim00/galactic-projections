@@ -766,6 +766,7 @@ slate.Variants = (function() {
       this._updateImages(variant);
       this._updatePrice(variant);
       this._updateSKU(variant);
+      this._updateDetails(variant);
       this.currentVariant = variant;
 
       if (this.enableHistoryState) {
@@ -880,6 +881,14 @@ slate.Variants = (function() {
 
       if (!masterSelect) return;
       masterSelect.value = variant.id;
+    },
+
+    _updateDetails: function(variant) {
+       var detailsTab = document.getElementById('Details');
+
+       if (detailsTab && document.variantDetails) {
+         detailsTab.innerHTML = document.variantDetails[variant.id];
+       }
     }
   });
 
